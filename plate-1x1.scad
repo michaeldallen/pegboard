@@ -9,41 +9,25 @@ horn_arc = 45;
 
 horn_diameter = 5;
 
-minkowski() {
-    union() {
-        translate([-1.5, 0, 0]) {
-            cube([(25.5 / 2) - roundcorner + 3 , 25.5 - roundcorner + 6, 5 - roundcorner], center = true);
-        }
-        translate([-1.5, 0, -2.5]) {
-            cube([(25.5 / 2) - roundcorner + 3 , 25.5 - roundcorner + 6, 5 - roundcorner], center = true);
-        }
-        translate([0, 0, -5]) {
-            cube([(25.5 / 2) - roundcorner + 6, 25.5 - roundcorner + 6 + 6, 5 - roundcorner], center = true);
-        }
-    }
-    sphere(d = roundcorner);
-}
+base_size = 25.5;
+plate_thickness = base_size / 8;
 
-/*
-translate([(-25.5 / 4) - 10, 12.75, 1.25]) {
-    rotate([90, 0, 0]) {
-        color("red") rotate_extrude(angle=horn_arc, $fn = 25) {
-            translate([10, 0]) {
-                circle(d=6);
-            }
+
+module pad() {
+    color("orange") 
+    translate([((base_size / 8) * 2) + (roundcorner / 2), ((base_size / 8) * 2) + (roundcorner / 2), roundcorner / 2]) {
+        minkowski() {
+            cube([((base_size / 8) * 4) - roundcorner, ((base_size / 8) * 4) - roundcorner, (2 * plate_thickness) - roundcorner]);
+            sphere(d = roundcorner);
         }
     }
-}
-
-*/
 
 
 
+    translate([base_size / 2, base_size / 2, 2 * plate_thickness])
 
-
-translate([10 + (25.5 / 4) -3, -12.5, 1.25]) {
-    rotate([270, -45, 180]) {
-        color("red") union() {
+    translate([10, 0, 0]){
+        color("green") rotate([90, 180 + 45, 0]) {
             rotate_extrude(angle=horn_arc) {
                 translate([10, 0]) {
                     circle(d = horn_diameter);
@@ -54,21 +38,30 @@ translate([10 + (25.5 / 4) -3, -12.5, 1.25]) {
             }
         }
     }
+
 }
 
 
-
-translate([10 + (25.5 / 4) -3, 12.75, 1.25]) {
-    rotate([270, -45, 180]) {
-        color("red") union() {
-            rotate_extrude(angle=horn_arc) {
-                translate([10, 0]) {
-                    circle(d = horn_diameter);
-                }
-            }
-            translate([10,0, 0]) {
-                color("purple") sphere(d = horn_diameter);
-            }
+module base() {
+    color("purple") 
+    translate([((base_size / 8) * 1) + (roundcorner / 2), ((base_size / 8) * 1) + (roundcorner / 2), (roundcorner / 2)]) {
+        minkowski() {
+            cube([((base_size / 8) * 6) - roundcorner, ((base_size / 8) * 6) - roundcorner, plate_thickness - roundcorner]);
+            sphere(d = roundcorner);
         }
     }
 }
+    
+
+
+module base3() {
+    color("blue") hull() {
+        base();
+        translate([0, base_size, 0]) base();
+    }
+}
+
+pad();
+translate([0, base_size, 0]) pad();
+//base2();
+base3();
