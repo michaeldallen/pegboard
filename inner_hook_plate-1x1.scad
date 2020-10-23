@@ -44,9 +44,9 @@ module pad() {
 
 module base() {
     color("purple") 
-    translate([((base_size / 8) * 1) + (roundcorner / 2), ((base_size / 8) * 1) + (roundcorner / 2), (roundcorner / 2)]) {
+    translate([((base_size / 8) * 0) + (roundcorner / 2), ((base_size / 8) * 1) + (roundcorner / 2), (roundcorner / 2)]) {
         minkowski() {
-            cube([((base_size / 8) * 6) - roundcorner, ((base_size / 8) * 6) - roundcorner, plate_thickness - roundcorner]);
+            cube([((base_size / 8) * 7) - roundcorner, ((base_size / 8) * 6) - roundcorner, plate_thickness - roundcorner]);
             sphere(d = roundcorner);
         }
     }
@@ -57,11 +57,11 @@ module base() {
 module base3() {
     color("blue") hull() {
         base();
-        translate([0, base_size, 0]) base();
+  //      translate([0, base_size, 0]) base();
     }
 }
 
 pad();
-translate([0, base_size, 0]) pad();
+//translate([0, base_size, 0]) pad();
 //base2();
 base3();
