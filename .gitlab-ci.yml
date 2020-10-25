@@ -11,5 +11,6 @@ create stl from scad:
     - ls -l 
     - echo bar
     - echo baz
+    - echo Finny is here
     
     
