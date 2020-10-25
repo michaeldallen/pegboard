@@ -5,9 +5,9 @@ $fn = fine ? 100 : 25;
 
 roundcorner = 2; 
 
-horn_arc = 45;
+horn_arc = 75;
 
-horn_diameter = 5;
+horn_diameter = 6;
 
 base_size = 25.5;
 plate_thickness = base_size / 8;
@@ -26,6 +26,7 @@ module pad() {
 
     translate([base_size / 2, base_size / 2, 2 * plate_thickness])
 
+rotate([0,15,0])
     translate([10, 0, 0]){
         color("green") rotate([90, 180 + 45, 0]) {
             rotate_extrude(angle=horn_arc) {
