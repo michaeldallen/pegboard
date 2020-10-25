@@ -9,5 +9,6 @@ create stl from scad:
     - openscad --help
     - pwd
     - ls -l 
+    - echo bar
     
     
