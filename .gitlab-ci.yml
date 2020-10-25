@@ -9,8 +9,11 @@ create stl from scad:
     - openscad --help
     - pwd
     - ls -l 
-    - echo bar
-    - echo baz
     - echo Finny is here
+    - mkdir -pv artifacts
+    - openscad -o artifacts/foo.stl inner_hook_plate-1x1.scad
+  artifacts:
+    paths:
+      - artifacts
     
     
