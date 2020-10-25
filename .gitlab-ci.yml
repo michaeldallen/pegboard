@@ -10,5 +10,6 @@ create stl from scad:
     - pwd
     - ls -l 
     - echo bar
+    - echo baz
     
     
