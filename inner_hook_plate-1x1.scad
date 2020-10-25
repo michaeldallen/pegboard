@@ -29,7 +29,7 @@ module pad(color = "blue", thickness = one_eighth) {
 
 module horn() {
     translate([(base_size / 2) - one_eighth, (base_size / 2) - one_eighth, 2 * plate_thickness]) {
-        rotate([0,10,0]) {
+        rotate([0,5,0]) {
             translate([10, 0, 0]) {
                 color("green") rotate([90, 180 + 45, 0]) {
                     rotate_extrude(angle=horn_arc) {
