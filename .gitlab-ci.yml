@@ -7,5 +7,7 @@ create stl from scad:
   stage: build
   script:
     - openscad --help
+    - pwd
+    - ls -l 
     
     
