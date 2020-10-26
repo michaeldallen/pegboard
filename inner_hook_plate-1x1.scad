@@ -27,9 +27,11 @@ module pad(color = "blue", thickness = one_eighth) {
 
 }
 
-module horn() {
+
+
+module horn(tilt = 0) {
     translate([(base_size / 2) - one_eighth, (base_size / 2) - one_eighth, 2 * plate_thickness]) {
-        rotate([0,5,0]) {
+        rotate([0, tilt, 0]) {
             translate([10, 0, 0]) {
                 color("green") rotate([90, 180 + 45, 0]) {
                     rotate_extrude(angle=horn_arc) {
@@ -62,7 +64,9 @@ module base(color = "purple", thickness = one_eighth) {
 
 
 
+
 base();
 pad();
-horn();
+//horn(5);// for wall control 
+horn(0);// for gatorboard
 
