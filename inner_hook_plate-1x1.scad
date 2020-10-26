@@ -5,7 +5,7 @@ $fn = fine ? 50 : 25;
 
 roundcorner = 0.5; 
 
-horn_arc = 75;
+horn_arc = 65;
 
 horn_diameter = 6;
 
