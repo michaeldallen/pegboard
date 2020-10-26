@@ -3,7 +3,7 @@ fine = false;
 
 $fn = fine ? 50 : 25;
 
-roundcorner = 0.5; 
+roundcorner = 1; 
 
 horn_arc = 65;
 
@@ -31,7 +31,7 @@ module pad(color = "blue", thickness = one_eighth) {
 
 module horn(tilt = 0) {
     translate([(base_size / 2) - one_eighth, (base_size / 2) - one_eighth, 2 * plate_thickness]) {
-        rotate([0, tilt, 0]) {
+        rotate([0, tilt, 180]) {
             translate([10, 0, 0]) {
                 color("green") rotate([90, 180 + 45, 0]) {
                     rotate_extrude(angle=horn_arc) {
