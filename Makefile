@@ -35,6 +35,7 @@ clean : tidy
 	time ${OPENSCAD} -m make -o $@ -d $@.deps $<
 
 artifacts/%.stl : %.scad
+	env | sort
 	[ -d artifacts ] || mkdir -v artifacts
 	time ${OPENSCAD} -m make -o $@ -d $@.deps $<
 
