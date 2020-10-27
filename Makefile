@@ -15,10 +15,12 @@ make.targets :
 
 include $(shell find . -name '*.deps')
 
-clean :
+tidy :
+	find * -name '*.deps' -exec rm -v {} \; ${INDENT}
+
+clean : tidy
 	find * -name '*~' -exec rm -v {} \; ${INDENT}
 	find * -name '*.stl' -exec rm -v {} \; ${INDENT}
-	find * -name '*.deps' -exec rm -v {} \; ${INDENT}
 	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
 
 %.stl : %.scad
