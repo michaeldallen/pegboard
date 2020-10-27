@@ -14,6 +14,8 @@ create stl from scad:
     - echo Finny is here
     - date
     - make artifacts/inner_hook_plate-1x1.stl
+    - outer_cover_plate-2x1.stl
+    - outer_cover_plate-2x1-sharpie_holder.stl
     - date
     - make tidy
   artifacts:
