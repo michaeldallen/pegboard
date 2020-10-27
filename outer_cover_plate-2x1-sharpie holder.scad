@@ -1,5 +1,5 @@
-//fine = true; 
-fine = false; 
+fine = true; 
+//fine = false; 
 
 $fn = fine ? 100 : 20;
 
@@ -179,7 +179,7 @@ module base3() {
 plate2();
 rail2();
 
-tube_id = base_size / 2;
+tube_id = (base_size / 2) + 1;
 tube_od = tube_id + (plate_thickness * 2);
 
 translate([base_size / 2, base_size * 2, - ((tube_od / 2) - plate_thickness)] ) {
