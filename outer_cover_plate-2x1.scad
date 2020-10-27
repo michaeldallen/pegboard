@@ -20,8 +20,8 @@ use <lib/cover.scad>;
 
 cover(1,2);
 
-translate([50, 0, 0]) cover(3,3);
+//translate([50, 0, 0]) cover(3,3);
 
-translate([0, 50, 20]) cover (2,2);
+//translate([0, 50, 20]) cover (2,2);
 
 
