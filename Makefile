@@ -1,8 +1,6 @@
 ifeq ($(shell uname -s),Darwin)
 	OPENSCAD := /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD
-endif
-
-ifeq (($shell uname -s),Linux)
+else ifeq ($(shell uname -s),Linux)
 	OPENSCAD := /usr/bin/openscad
 endif
 
@@ -42,3 +40,4 @@ artifacts/%.stl : %.scad
 	time ${OPENSCAD} -m make -o $@ -d $@.deps $<
 
 #EOF
+
