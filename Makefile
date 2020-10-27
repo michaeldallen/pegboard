@@ -1,7 +1,9 @@
 ifeq ($(shell uname -s),Darwin)
-	OPENSCAD = /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD
-else ifeq (($shell uname -s),Linux)
-	OPENSCAD = /usr/bin/openscad
+	OPENSCAD := /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD
+endif
+
+ifeq (($shell uname -s),Linux)
+	OPENSCAD := /usr/bin/openscad
 endif
 
 SHELL := bash
