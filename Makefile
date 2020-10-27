@@ -27,9 +27,15 @@ clean :
 	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
 
 %.stl : %.scad
+	echo osc1: ${OPENSCAD}
+	echo osc2: $(OPENSCAD)
+	echo osc3: $OPENSCAD
 	time ${OPENSCAD} -m make -o $@ -d $@.deps $<
 
 artifacts/%.stl : %.scad
+	echo osc1: ${OPENSCAD}
+	echo osc2: $(OPENSCAD)
+	echo osc3: $OPENSCAD
 	[ -d artifacts ] || mkdir -v artifacts
 	time ${OPENSCAD} -m make -o $@ -d $@.deps $<
 
