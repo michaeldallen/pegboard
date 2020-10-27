@@ -1,3 +1,9 @@
+ifeq ($(shell uname -s),Darwin)
+	OPENSCAD := /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD
+else ifeq (($shell uname -s),Linux)
+	OPENSCAD := /usr/bin/openscad
+endif
+
 SHELL := bash
 
 INDENT := 2>&1 | sed 's/^/    /'
@@ -24,10 +30,10 @@ clean : tidy
 	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
 
 %.stl : %.scad
-	time openscad -m make -o $@ -d $@.deps $<
+	time ${OPENSCAD} -m make -o $@ -d $@.deps $<
 
 artifacts/%.stl : %.scad
 	[ -d artifacts ] || mkdir -v artifacts
-	time openscad -m make -o $@ -d $@.deps $<
+	time ${OPENSCAD} -m make -o $@ -d $@.deps $<
 
 #EOF

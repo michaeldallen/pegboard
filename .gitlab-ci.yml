@@ -7,9 +7,6 @@ stages:
 create stl from scad:
   stage: build
   script:
-    - echo $PATH
-    - PATH=$PATH:/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD:/usr/bin/openscad
-    - echo $PATH
     - openscad --help
     - pwd
     - ls -l 
