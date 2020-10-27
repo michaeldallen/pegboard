@@ -40,7 +40,7 @@ module horn(tilt = 0) {
                         }
                     }
                     translate([10,0, 0]) {
-                        color("purple") sphere(d = horn_diameter);
+                        sphere(d = horn_diameter);
                     }
                 }
             }
@@ -49,12 +49,26 @@ module horn(tilt = 0) {
 }
 
 
-module base(color = "purple", thickness = one_eighth) {
+module base(color = "purple", thickness = one_eighth, radius = 2) {
     color(color) {
         translate([roundcorner, roundcorner, roundcorner]) {
-            minkowski() {
-                cube([((base_size / 8) * 7) - (roundcorner * 2), ((base_size / 8) * 6) - (roundcorner * 2), thickness - (roundcorner * 2)]);
-                sphere(d = roundcorner * 2);
+            trim_shim = 0.1;
+            translate([0, 0, trim_shim]){
+                minkowski() {
+                    fudge = 0;
+                    hull() {
+                        translate([                                            radius, ((base_size / 8) * 6) - (roundcorner * 2) - radius, 0]) 
+                            cylinder(h = thickness - (roundcorner * 2) - trim_shim + fudge, r = radius);
+                        translate([((base_size / 8) * 7) - (roundcorner * 2) - radius, ((base_size / 8) * 6) - (roundcorner * 2) - radius, 0]) 
+                            cylinder(h = thickness - (roundcorner * 2) - trim_shim + fudge, r = radius);
+                        translate([                                            radius,                                             radius, 0]) 
+                            cylinder(h = thickness - (roundcorner * 2) - trim_shim + fudge, r = radius);
+                        translate([((base_size / 8) * 7) - (roundcorner * 2) - radius,                                             radius, 0]) 
+                            cylinder(h = thickness - (roundcorner * 2) - trim_shim + fudge, r = radius);
+                    }
+                    sphere(d = roundcorner * 2);
+                }
+
             }
         }
     }
