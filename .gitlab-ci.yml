@@ -11,8 +11,7 @@ create stl from scad:
     - ls -l 
     - echo Finny is here
     - date
-    - mkdir -pv artifacts
-    - time openscad -o artifacts/inner_hook_plate-1x1.stl inner_hook_plate-1x1.scad
+    - make artifacts/inner_hook_plate-1x1.stl
     - date
   artifacts:
     paths:
