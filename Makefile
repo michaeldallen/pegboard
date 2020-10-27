@@ -1,4 +1,4 @@
-
+SHELL := bash
 ifeq ($(shell uname -s),Darwin)
 	OPENSCAD := /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD
 else ifeq (($shell uname -s),Linux)
