@@ -1,19 +1,15 @@
 image: bbassett/openscad
 
 stages: 
-  - diag
   - build
   
-diagnostics:
-  stage: diag
-  script:
-    - uname -a
-    - uname -s
-
     
 create stl from scad:
   stage: build
   script:
+    - echo $PATH
+    - PATH=$PATH:/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD:/usr/bin/openscad
+    - echo $PATH
     - openscad --help
     - pwd
     - ls -l 
