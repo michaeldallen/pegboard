@@ -21,23 +21,33 @@ make.targets :
 
 include $(shell find . -name '*.deps')
 
+diag :
+	uname -a
+	uname -s
+	env | sort
+
 tidy :
 	find * -name '*.deps' -exec rm -v {} \; ${INDENT}
 
 clean : tidy
 	find * -name '*~' -exec rm -v {} \; ${INDENT}
 	find * -name '*.stl' -exec rm -v {} \; ${INDENT}
-	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
+	([ -d artifacts ] && rmdir -v artifacts || true) ${INDENT}
+	([ -d deps ] && rmdir -v deps || true) ${INDENT}
 
 %.stl : %.scad
-	time ${OPENSCAD} -m make -o $@ -d $@.deps $<
+	[ -d deps ] || mkdir -v deps
+	time ${OPENSCAD} -o $@ -d deps/$@.deps $<
 
-artifacts/%.stl : %.scad
-	uname -a
-	uname -s
-	env | sort
+artifacts/%.stl : %.stl
 	[ -d artifacts ] || mkdir -v artifacts
-	time ${OPENSCAD} -m make -o $@ -d $@.deps $<
+	cp -v --preserve=all $< $@
+
+
+everything :
+	for s in *.scad ; do \
+		echo ${MAKE} ${MAKEFLAGS} $$(basename $$s .scad).stl ; \
+	done
 
 #EOF
 
