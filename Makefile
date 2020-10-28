@@ -35,9 +35,14 @@ clean : tidy
 	([ -d artifacts ] && rmdir -v artifacts || true) ${INDENT}
 	([ -d deps ] && rmdir -v deps || true) ${INDENT}
 
-%.stl : %.scad
-	[ -d deps ] || mkdir -v deps
-	time ${OPENSCAD} -o $@ -d deps/$@.deps $<
+cache :
+	[ -d cache ] || mkdir -v cache
+
+%.stl : %.scad cache
+	time ${OPENSCAD} -o $@ -d cache/$@.deps $<
+	@echo .
+	@echo .
+	@echo .
 
 artifacts/%.stl : %.stl
 	[ -d artifacts ] || mkdir -v artifacts
@@ -46,7 +51,7 @@ artifacts/%.stl : %.stl
 
 everything :
 	for s in *.scad ; do \
-		echo ${MAKE} ${MAKEFLAGS} $$(basename $$s .scad).stl ; \
+		${MAKE} --no-print-directory ${MAKEFLAGS} $$(basename $$s .scad).stl ; \
 	done
 
 #EOF
