@@ -2,8 +2,11 @@ image: bbassett/openscad
 
 stages: 
   - build
-  
-    
+
+cache:
+  paths:
+    - cache/
+
 create stl from scad:
   stage: build
   script:

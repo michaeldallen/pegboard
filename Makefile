@@ -33,25 +33,24 @@ clean : tidy
 	find * -name '*~' -exec rm -v {} \; ${INDENT}
 	find * -name '*.stl' -exec rm -v {} \; ${INDENT}
 	([ -d artifacts ] && rmdir -v artifacts || true) ${INDENT}
-	([ -d deps ] && rmdir -v deps || true) ${INDENT}
+	([ -d cache ] && rmdir -v cache || true) ${INDENT}
 
-cache :
-	[ -d cache ] || mkdir -v cache
-
-%.stl : %.scad cache
-	time ${OPENSCAD} -o $@ -d cache/$@.deps $<
+cache/%.stl : %.scad
+	@[ -d cache ] || mkdir -v cache
+	time ${OPENSCAD} -o $@ -d $@.deps $<
 	@echo .
 	@echo .
 	@echo .
 
-artifacts/%.stl : %.stl
-	[ -d artifacts ] || mkdir -v artifacts
+
+artifacts/%.stl : cache/%.stl 
+	@[ -d artifacts ] || mkdir -v artifacts
 	cp -v --preserve=all $< $@
 
 
 everything :
-	for s in *.scad ; do \
-		${MAKE} --no-print-directory ${MAKEFLAGS} $$(basename $$s .scad).stl ; \
+	@for s in *.scad ; do \
+		${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl ; \
 	done
 
 #EOF
