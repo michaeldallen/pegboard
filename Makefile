@@ -4,6 +4,8 @@ else ifeq ($(shell uname -s),Linux)
 	OPENSCAD := /usr/bin/openscad
 endif
 
+.PRECIOUS: cache/%.stl
+
 SHELL := bash
 
 INDENT := 2>&1 | sed 's/^/    /'
