@@ -1,9 +1,9 @@
-fine = true; 
-//fine = false; 
+//fine = true;
+fine = false;
 
 $fn = fine ? 100 : 25;
 
-roundcorner = 1; 
+roundcorner = 1;
 
 horn_arc = 65;
 

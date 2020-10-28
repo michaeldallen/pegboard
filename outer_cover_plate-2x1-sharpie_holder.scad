@@ -1,9 +1,9 @@
-fine = true; 
-//fine = false; 
+//fine = true;
+fine = false;
 
-$fn = fine ? 100 : 20;
+$fn = fine ? 100 : 25;
 
-roundcorner = 2; 
+roundcorner = 2;
 
 horn_arc = 45;
 
@@ -14,7 +14,7 @@ plate_thickness = base_size / 8;
 
 
 module pad() {
-    color("orange") 
+    color("orange")
     translate([((base_size / 8) * 2) + (roundcorner / 2), ((base_size / 8) * 2) + (roundcorner / 2), roundcorner / 2]) {
         minkowski() {
             cube([((base_size / 8) * 4) - roundcorner, ((base_size / 8) * 4) - roundcorner, (2 * plate_thickness) - roundcorner]);
@@ -43,7 +43,7 @@ module pad() {
 
 
 module base() {
-    color("purple") 
+    color("purple")
     translate([((base_size / 8) * 1) + (roundcorner / 2), ((base_size / 8) * 1) + (roundcorner / 2), (roundcorner / 2)]) {
         minkowski() {
             cube([((base_size / 8) * 6) - roundcorner, ((base_size / 8) * 6) - roundcorner, plate_thickness - roundcorner]);
@@ -51,9 +51,9 @@ module base() {
         }
     }
 }
-    
+
 module plate() {
-    color("red") 
+    color("red")
     translate([((base_size / 8) * 0) + (roundcorner / 2), ((base_size / 8) * 0) + (roundcorner / 2), (roundcorner / 2)]) {
         minkowski() {
             cube([((base_size / 8) * 8) - roundcorner, ((base_size / 8) * 8) - roundcorner, plate_thickness - roundcorner]);
@@ -62,7 +62,7 @@ module plate() {
     }
 }
 module plate2() {
-    color("red") 
+    color("red")
     translate([((base_size / 8) * 0) + (roundcorner / 2), ((base_size / 8) * 0) + (roundcorner / 2), (roundcorner / 2)]) {
         minkowski() {
             cube([((base_size / 8) * 8) - roundcorner, ((base_size / 8) * 8 * 2) - roundcorner, plate_thickness - roundcorner]);
@@ -84,8 +84,8 @@ module rail() {
             sphere(d = roundcorner);
         }
     }
-    
-    
+
+
     color("grey") translate([((base_size / 8) * 0) + (roundcorner / 2), ((base_size / 8) * 0) + (roundcorner / 2), (roundcorner / 2)]) {
         minkowski() {
             cube([((base_size / 8) * 8) - roundcorner, ((base_size / 8) * 1) - roundcorner, (plate_thickness * 3) - roundcorner]);
@@ -98,9 +98,9 @@ module rail() {
             sphere(d = roundcorner);
         }
     }
-    
-    
-    
+
+
+
     color("grey") translate([((base_size / 8) * 7) + (roundcorner / 2), ((base_size / 8) * 0) + (roundcorner / 2), (roundcorner / 2)]) {
         minkowski() {
             cube([((base_size / 8) * 1) - roundcorner, ((base_size / 8) * 8) - roundcorner, (plate_thickness * 3) - roundcorner]);
@@ -130,8 +130,8 @@ module rail2() {
             sphere(d = roundcorner);
         }
     }
-    
-    
+
+
     color("grey") translate([((base_size / 8) * 0) + (roundcorner / 2), ((base_size / 8) * 0) + (roundcorner / 2), (roundcorner / 2)]) {
         minkowski() {
             cube([((base_size / 8) * 8) - roundcorner, ((base_size / 8) * 1) - roundcorner, (plate_thickness * 3) - roundcorner]);
@@ -144,9 +144,9 @@ module rail2() {
             sphere(d = roundcorner);
         }
     }
-    
-    
-    
+
+
+
     color("grey") translate([((base_size / 8) * 7) + (roundcorner / 2), ((base_size / 8) * 0) + (roundcorner / 2), (roundcorner / 2)]) {
         minkowski() {
             cube([((base_size / 8) * 1) - roundcorner, ((base_size / 8) * 8 * 2) - roundcorner, (plate_thickness * 3) - roundcorner]);
