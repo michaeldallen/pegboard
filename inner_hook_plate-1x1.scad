@@ -1,7 +1,7 @@
-//fine = true; 
-fine = false; 
+fine = true; 
+//fine = false; 
 
-$fn = fine ? 50 : 25;
+$fn = fine ? 100 : 25;
 
 roundcorner = 1; 
 
