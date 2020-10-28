@@ -17,7 +17,8 @@ create stl from scad:
     - make artifacts/outer_cover_plate-2x1.stl
     - make artifacts/outer_cover_plate-2x1-sharpie_holder.stl
     - date
-    - make tidy
+    - ls -lR
+    
   artifacts:
     paths:
       - artifacts
