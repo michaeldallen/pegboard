@@ -19,6 +19,7 @@ create stl from scad:
     - make artifacts/inner_hook_plate-1x1.stl
     - make artifacts/outer_cover_plate-2x1.stl
     - make artifacts/outer_cover_plate-2x1-sharpie_holder.stl
+    - make artifacts/outer_cover_plate-4x1-torch_holder.stl
     - date
     - ls -lR
     
