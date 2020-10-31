@@ -18,7 +18,8 @@ use <lib/cover.scad>;
     
 
 
-cover(1,2);
+cover(1,2, 0.1);
+
 
 //translate([50, 0, 0]) cover(3,3);
 

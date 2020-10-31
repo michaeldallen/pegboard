@@ -1,7 +1,7 @@
 fine = true;
 //fine = false;
 
-$fn = fine ? 100 : 25;
+$fn = fine ? 200 : 25;
 
 roundcorner = 2;
 
@@ -186,7 +186,7 @@ use <lib/cover.scad>;
 tube_id = 28;
 tube_od = tube_id + (plate_thickness * 2);
 
-translate([base_size / 2, base_size * 4, - ((tube_od / 2) - plate_thickness)] ) {
+translate([base_size / 2, base_size * 4, - ((tube_od / 2) - (plate_thickness * 0.75))] ) {
     rotate([90, 0, 0]) {
         difference() {
             cylinder(d = tube_od, h = base_size * 4);
@@ -195,6 +195,7 @@ translate([base_size / 2, base_size * 4, - ((tube_od / 2) - plate_thickness)] ) 
         }
     }
 }
+
 
 cover(1,4, 0.2);
 
