@@ -27,12 +27,16 @@ diag :
 	uname -s
 	env | sort
 
-tidy :
+clean.wicked :
 	find * -name '*.deps' -exec rm -v {} \; ${INDENT}
 
-clean : tidy
+clean :
 	find * -type f -name '*~' -exec rm -v {} \; ${INDENT}
 	find * -type f -name '*.stl' -exec rm -v {} \; ${INDENT}
+	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
+
+tidy :
+	find artifacts -type f -name '*.stl' -exec rm -v {} \; ${INDENT}
 	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
 
 %.stl : %.scad
