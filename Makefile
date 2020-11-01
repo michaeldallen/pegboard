@@ -9,7 +9,6 @@ SHELL := bash
 
 INDENT := 2>&1 | sed 's/^/    /'
 
-
 make.targets :
 	@echo "available Make targets:"
 	@$(MAKE) -pRrq -f $(firstword $(MAKEFILE_LIST)) : 2>/dev/null \

@@ -1,7 +1,7 @@
 fine = true;
 //fine = false;
 
-$fn = fine ? 200 : 25;
+$fn = fine ? 100 : 25;
 
 roundcorner = 2;
 roundcorner_radius = roundcorner / 2;
