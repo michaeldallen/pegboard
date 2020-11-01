@@ -4,11 +4,11 @@ else ifeq ($(shell uname -s),Linux)
 	OPENSCAD := /usr/bin/openscad
 endif
 
-.PRECIOUS: cache/%.stl
 
 SHELL := bash
 
 INDENT := 2>&1 | sed 's/^/    /'
+
 
 make.targets :
 	@echo "available Make targets:"
@@ -19,9 +19,8 @@ make.targets :
 	| env LC_COLLATE=C sort
 
 
-
-
 include $(shell find . -name '*.deps')
+
 
 diag :
 	uname -a
@@ -32,22 +31,20 @@ tidy :
 	find * -name '*.deps' -exec rm -v {} \; ${INDENT}
 
 clean : tidy
-	find * -name '*~' -exec rm -v {} \; ${INDENT}
-	find * -name '*.stl' -exec rm -v {} \; ${INDENT}
-	([ -d artifacts ] && rmdir -v artifacts || true) ${INDENT}
-	([ -d cache ] && rmdir -v cache || true) ${INDENT}
+	find * -type f -name '*~' -exec rm -v {} \; ${INDENT}
+	find * -type f -name '*.stl' -exec rm -v {} \; ${INDENT}
+	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
 
-cache/%.stl : %.scad
-	@[ -d cache ] || mkdir -v cache
-	time ${OPENSCAD} -o $@ -d $@.deps $<
+%.stl : %.scad
+	time ${OPENSCAD} -d $@.deps -o $@ $<
 	@echo .
 	@echo .
 	@echo .
 
 
-artifacts/%.stl : cache/%.stl 
+artifacts/%.stl : %.stl
 	@[ -d artifacts ] || mkdir -v artifacts
-	cp -v --preserve=all $< $@
+	cp $< $@
 
 
 everything :
