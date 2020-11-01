@@ -47,7 +47,7 @@ artifacts/%.stl : %.stl
 	cp $< $@
 
 
-everything :
+everything all :
 	@for s in *.scad ; do \
 		${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl ; \
 	done
