@@ -43,19 +43,21 @@ module tube(od, id, h) {
 module tube2(od, id, h, r) {
     
     color("green") 
-    translate([0, 0, 30])
-    translate([0, 0, h / 2])
-//        rotate_extrude()
-            translate([id / 2 + ((od - id) / 4), 0, 0]) 
-                square([(od - id) / 2, h], center = true);
-    
 
-
-
-
+    translate([0, 0, r])
+        rotate_extrude() 
+            translate([id / 2 + ((od - id) / 4), 0, 0])  
+                    hull() {
+                        translate([((od - id) / 4) - r, 0, 0]) 
+                            circle(r = r);
+                        translate([-1 * (((od - id) / 4) - r), 0, 0])
+                            circle(r = r);
+                    }
+                
+            
+        
     
-    
-    
+   
 }
 
 
@@ -66,6 +68,6 @@ tube(od = 40, id = 20, h = 30);
 //tube(od = 10, id = 5, h = 50);
 
 
-tube2(od = 40, id = 20, h = 30, r = 0);
+tube2(od = 40, id = 20, h = 30, r = 2);
 
 
