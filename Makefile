@@ -39,7 +39,9 @@ tidy :
 
 cache/%.stl : %.scad
 	[ -d cache ] || mkdir -v cache
+	date
 	time ${OPENSCAD} -d $@.deps -o $@ $<
+	date
 	@echo .
 	@echo .
 	@echo .
