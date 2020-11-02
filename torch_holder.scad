@@ -1,5 +1,5 @@
-fine = true;
-//fine = false;
+//fine = true;
+fine = false;
 
 $fn = fine ? 100 : 25;
 
@@ -83,15 +83,16 @@ module shoulder () {
 
 
 cover(1,4, 0.2);
+//translate([0, 0, - plate_thickness * 3/8]) color("orange") bar(x = base_size, y = base_size * 4, z = plate_thickness * 1.25);
 
 //translate([50, 0, 0]) 
 //color("orange") tube1();
-
 
 //translate([0, 0, 5]) tube2();
 rotate([90, 0, 0]) {
     translate([base_size / 2, -1 * ((tube_od / 2) - (plate_thickness * .75)), -1 * ((base_size * 4) - roundcorner_radius)]) {
         tube3();
+
         shoulder();
     }
 }

@@ -33,19 +33,21 @@ clean :
 	find * -type f -name '*~' -exec rm -v {} \; ${INDENT}
 	find * -type f -name '*.stl' -exec rm -v {} \; ${INDENT}
 	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
+	([ -d cache ] && rmdir cache || true) ${INDENT}
 
 tidy :
 	find artifacts -type f -name '*.stl' -exec rm -v {} \; ${INDENT}
 	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
 
-%.stl : %.scad
+cache/%.stl : %.scad
+	[ -d cache ] || mkdir -v cache
 	time ${OPENSCAD} -d $@.deps -o $@ $<
 	@echo .
 	@echo .
 	@echo .
 
 
-artifacts/%.stl : %.stl
+artifacts/%.stl : cache/%.stl
 	@[ -d artifacts ] || mkdir -v artifacts
 	cp $< $@
 

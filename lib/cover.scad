@@ -51,6 +51,45 @@ module cover(x_ness = 1, y_ness = 1, base_shim = 0) {
 
 
 
-cover(1,4, 0.1);
+module box(inner_x = 10, inner_y = 20, inner_z = 30, roundcorner_radius = 1, wall_thickness =5) {
+    translate([-1 * (inner_x / 2), -1 * (inner_y / 2) , -1 * (inner_z / 2)]) {
+        difference () {
+            translate([-1 * (wall_thickness / 2), -1 * (wall_thickness / 2), -1 * (wall_thickness / 2)]) {
+                color("red") cube([inner_x + wall_thickness, inner_y + wall_thickness, inner_z + wall_thickness]);
+            }
+            translate([0, 0, -1 * (wall_thickness * 2)]) {
+                color("blue") cube([inner_x, inner_y, inner_z + wall_thickness * 4]);
+            }
+        }
+    }
+}
 
-//translate([10, 0, 0]) cover(1,2);
+module rc_box(inner_x = 10, inner_y = 20, inner_z = 30, roundcorner_radius = 1, wall_thickness =5) {
+    minkowski () {
+        translate([-1 * (inner_x / 2), -1 * (inner_y / 2) , -1 * (inner_z / 2)]) {
+            difference () {
+                
+                translate([-1 * ((wall_thickness / 2) - roundcorner_radius), 
+                           -1 * ((wall_thickness / 2) - roundcorner_radius),
+                           -1 * ((wall_thickness / 2) - roundcorner_radius)]) {
+                    color("red") cube([inner_x + wall_thickness - (roundcorner_radius * 2),
+                                       inner_y + wall_thickness - (roundcorner_radius * 2),
+                                       inner_z + wall_thickness - (roundcorner_radius * 2)]);
+                }
+                
+                translate([-1 * roundcorner_radius, -1 * roundcorner_radius, -1 * (wall_thickness * 2)]) {
+                    color("blue") cube([inner_x + (roundcorner_radius * 2), 
+                                        inner_y + (roundcorner_radius * 2),
+                                        inner_z + (roundcorner_radius * 2) + wall_thickness * 4]);
+                }
+                
+            }
+        }
+        sphere(r = roundcorner_radius);
+    }
+}
+
+
+
+//box();
+rc_box(inner_x = 8, inner_y = base_size, inner_z = base_size * 3, roundcorner_radius = 1);
