@@ -1,5 +1,5 @@
 
-module tube(od, id, h, r = 2) {
+module tube(od, id, h, r = 1) {
     
     color("green") 
     translate([0, 0, r]) 
@@ -37,11 +37,11 @@ module tube(od, id, h, r = 2) {
    
 }
 
-module hollow_tube(od, id, h, r) {
+module hollow_tube(od, id, h, r = 1) {
     tube(od, id, h, r);
 }
 
-module solid_tube(od, id = 0, h, r) {
+module solid_tube(od, id = 0, h, r = 1) {
     union() {
         tube(od, id, h, r);
         color("orange") cylinder(d = (od - (r * 2)), h = h);
@@ -49,15 +49,14 @@ module solid_tube(od, id = 0, h, r) {
 }
 
 
-$fn = 25;
 
-tube(od = 10, id = 5, h = 50, r = 1);
+solid_tube(od = 10, h = 50);
 
 
-tube(od = 40, id = 20, h = 30);
+hollow_tube(od = 40, id = 20, h = 30, r = 2);
 
 translate([40, 0, 0])
     hollow_tube(od = 20, id = 10, h = 3, r = 1);
 
 translate([40, 30, 0])
-    solid_tube(od = 20, id = 10, h = 7, r = 3);
+    solid_tube(od = 20, h = 7, r = 2);
