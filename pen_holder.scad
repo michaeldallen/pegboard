@@ -23,15 +23,16 @@ tube_od = tube_id + (plate_thickness * 2);
 
 
 length = 3;
+
+
 translate([base_size / 2, base_size * length, - ((tube_od / 2) - plate_thickness)] ) {
     
     rotate([90, 0, 0]) {
-        union() {
-            color("blue") hollow_tube(od = tube_od, id = tube_id, h = base_size * length, r = 1);
-            color("orange") solid_tube(od = tube_od, h = plate_thickness, r = 1);
-        }
+        color("blue") hollow_tube(od = tube_od, id = tube_id, h = base_size * length, r = 1);
+        color("orange") solid_tube(od = tube_od, h = plate_thickness * 2, r = 1);
     }
 }
 
-translate([0, 0, 1]) cover(1, 2, 0.2);
+translate([0, 0, plate_thickness / 4]) 
+    cover(1, 2, 0.2);
 
