@@ -77,12 +77,14 @@ rail2();
 tube_id = (base_size / 2) + 1;
 tube_od = tube_id + (plate_thickness * 2);
 
+
 translate([base_size / 2, base_size * 2, - ((tube_od / 2) - plate_thickness)] ) {
+    
     rotate([90, 0, 0]) {
-        tube(od = tube_od, id = tube_id, h = base_size * 2, r = 1);
-        translate([0, -1 * (tube_od - (plate_thickness / 2)), -1 * (base_size / 2)]) {
-            tube(od = tube_od, id = tube_id, h = base_size * 2, r = 1);
-        }
+        color("blue") hollow_tube(od = tube_od, id = tube_id, h = base_size * 2, r = 1);
+        color("orange") solid_tube(od = tube_od, h = plate_thickness, r = 1);
+        
+      
 
 
     }
