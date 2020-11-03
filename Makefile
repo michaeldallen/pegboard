@@ -5,6 +5,8 @@ else ifeq ($(shell uname -s),Linux)
 endif
 
 
+.PRECIOUS: cache/%.stl
+
 SHELL := bash
 
 INDENT := 2>&1 | sed 's/^/    /'
@@ -54,7 +56,7 @@ artifacts/%.stl : cache/%.stl
 
 everything all :
 	@for s in *.scad ; do \
-		${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl ; \
+		[ -r $$s ] && ${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl ; \
 	done
 
 #EOF
