@@ -21,3 +21,5 @@ use <lib/cover.scad>;
 //translate([0, 0, standoff_height]) cube([58 + 3.5 + 3.5, 49 + 3.5 + 3.5, 5]);
 
 translate([-10, -10, standoff_height]) bar(x = 85 + 3.5 + 3.5 + 20, y = 49 + 3.5 + 3.5 + 20, z = 5);
+
+
