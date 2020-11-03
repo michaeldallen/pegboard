@@ -8,7 +8,13 @@ cache:
     - cache/
 
 create stl from scad:
+
   stage: build
+
+  only: 
+    refs:
+      - master
+
   script:
     - make --version
     - openscad --help
