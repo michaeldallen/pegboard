@@ -1,7 +1,7 @@
-//fine = true;
-fine = false;
+fine = true;
+//fine = false;
 
-$fn = fine ? 100 : 40;
+$fn = fine ? 100 : 25;
 
 roundcorner = 2;
 
@@ -26,12 +26,10 @@ length = 3;
 translate([base_size / 2, base_size * length, - ((tube_od / 2) - plate_thickness)] ) {
     
     rotate([90, 0, 0]) {
-        color("blue") hollow_tube(od = tube_od, id = tube_id, h = base_size * length, r = 1);
-        color("orange") solid_tube(od = tube_od, h = plate_thickness, r = 1);
-        
-      
-
-
+        union() {
+            color("blue") hollow_tube(od = tube_od, id = tube_id, h = base_size * length, r = 1);
+            color("orange") solid_tube(od = tube_od, h = plate_thickness, r = 1);
+        }
     }
 }
 
