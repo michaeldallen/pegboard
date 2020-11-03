@@ -69,7 +69,7 @@ module rail2() {
     }
 }
 
-
+use <lib/tube.scad>;
 
 plate2();
 rail2();
@@ -77,23 +77,13 @@ rail2();
 tube_id = (base_size / 2) + 1;
 tube_od = tube_id + (plate_thickness * 2);
 
-// tube
 translate([base_size / 2, base_size * 2, - ((tube_od / 2) - plate_thickness)] ) {
     rotate([90, 0, 0]) {
-        difference() {
-            cylinder(d = tube_od, h = base_size * 2);
-            translate([0, 0, plate_thickness]) {
-                cylinder(d = tube_id, h = (base_size * 2));
-            }
-        }
+        tube(od = tube_od, id = tube_id, h = base_size * 2, r = 1);
         translate([0, -1 * (tube_od - (plate_thickness / 2)), -1 * (base_size / 2)]) {
-            difference() {
-                cylinder(d = tube_od, h = base_size * 2);
-                translate([0, 0, plate_thickness]) {
-                    cylinder(d = tube_id, h = (base_size * 2));
-                }
-            }
+            tube(od = tube_od, id = tube_id, h = base_size * 2, r = 1);
         }
+
 
     }
 }
