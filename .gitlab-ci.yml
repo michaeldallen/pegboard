@@ -3,9 +3,9 @@ image: bbassett/openscad
 stages: 
   - build
 
-cache:
-  paths:
-    - cache/
+#cache:
+#  paths:
+#    - cache/
 
 create stl from scad:
 
