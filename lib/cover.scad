@@ -1,13 +1,6 @@
-//fine = true; 
-fine = false; 
 
-$fn = fine ? 100 : 25;
 
-roundcorner = 2; 
 
-horn_arc = 45;
-
-horn_diameter = 5;
 
 base_size = 25.5;
 plate_thickness = base_size / 8;
