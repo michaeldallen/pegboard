@@ -20,15 +20,18 @@ gitlab ci demo
 
 ## git
 
-* experiment with multiple upstream repos
+### experiment with multiple upstream repos
 
-  How To Use git with Multiple Remote Repositories, by Anthony Heddings
-  [How To Use git with Multiple Remote Repositories](https://www.cloudsavvyit.com/2464/how-to-use-git-with-multiple-remote-repositories/)
+  * [How To Use git with Multiple Remote Repositories](https://www.cloudsavvyit.com/2464/how-to-use-git-with-multiple-remote-repositories/), by Anthony Heddings
   
-  pull/push from multiple remote locations, from stackoverflow
-  [pull/push from multiple remote locations](https://stackoverflow.com/questions/849308/pull-push-from-multiple-remote-locations)
   
-    especially see the post from Malvineous on Oct 9, 2012
+  * [pull/push from multiple remote locations](https://stackoverflow.com/questions/849308/pull-push-from-multiple-remote-locations), from [Malvineous](https://stackoverflow.com/users/308237/malvineous) on from stackoverflow
+    
+        git remote set-url origin --push --add git@gitlab.com:michaeldallen/pegboard.git
+        git remote set-url origin --push --add git@github.com:michaeldallen/pegboard.git
+        git push
+        <magic happens>
+    
 
   from `github`
 
