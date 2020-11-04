@@ -25,7 +25,7 @@ create stl from scad:
     - ls -lR | tee a
     - /usr/lib/git-core/git-restore-mtime
     - ls -lR | tee b
-    - diff --side-by-side a b 
+    - diff --side-by-side a b || true
     - make --version
     - openscad --help
     - pwd
