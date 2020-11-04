@@ -37,3 +37,4 @@ translate([base_size / 2, base_size * length, - ((tube_od / 2) - plate_thickness
 translate([0, 0, plate_thickness / 4])
     cover(1, 2, 0.2);
 
+
