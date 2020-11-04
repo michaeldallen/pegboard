@@ -33,6 +33,7 @@ gitlab ci demo
         git push
         <magic happens>
     
+    another look at the same magic: [Pushing to Multiple Git Repos](https://gist.github.com/rvl/c3f156e117e22a25f242)
 
   from `github`
 
