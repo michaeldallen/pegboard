@@ -59,3 +59,5 @@ gitlab ci demo
   Basic Syntax: The Markdown elements outlined in John Gruber's design document.
   [Markdown Guide](https://www.markdownguide.org/basic-syntax/)
 
+* [Cross-reference (named anchor) in markdown](https://stackoverflow.com/questions/5319754/cross-reference-named-anchor-in-markdown)
+
