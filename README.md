@@ -24,6 +24,11 @@ gitlab ci demo
 
   How To Use git with Multiple Remote Repositories, by Anthony Heddings
   [How To Use git with Multiple Remote Repositories](https://www.cloudsavvyit.com/2464/how-to-use-git-with-multiple-remote-repositories/)
+  
+  pull/push from multiple remote locations, from stackoverflow
+  [pull/push from multiple remote locations](https://stackoverflow.com/questions/849308/pull-push-from-multiple-remote-locations)
+  
+    especially see the post from Malvineous on Oct 9, 2012
 
   from `github`
 
