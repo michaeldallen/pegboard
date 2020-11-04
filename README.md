@@ -24,7 +24,7 @@ gitlab ci demo
 
   * [How To Use git with Multiple Remote Repositories](https://www.cloudsavvyit.com/2464/how-to-use-git-with-multiple-remote-repositories/), by Anthony Heddings
   
-  * <a name="magic"></a>
+  * <a name="magic"></a>(note: this is magic)
     [pull/push from multiple remote locations](https://stackoverflow.com/questions/849308/pull-push-from-multiple-remote-locations)
     from [Malvineous](https://stackoverflow.com/users/308237/malvineous)
     
