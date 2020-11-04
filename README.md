@@ -27,11 +27,16 @@ gitlab ci demo
 
   from `github`
 
-    git remote add gitlab git@gitlab.com:michaeldallen/pegboard.git
-    git remote -v
-    git push gitlab main
+        git remote add gitlab git@gitlab.com:michaeldallen/pegboard.git
+        git remote -v
+        git push gitlab main
 
+  from `gitlab`
 
+        git remote add github git@github.com:michaeldallen/pegboard.git
+        git remote -v
+        git push github main
+          
 
 
 ## markdown
