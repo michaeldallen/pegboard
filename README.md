@@ -13,3 +13,9 @@ gitlab ci demo
 * box
 
   hollow or solid cube, optionally with rounded edges
+
+* cover
+
+  cap for pegboard anchors for use as basis of everything else
+
+
