@@ -22,6 +22,9 @@ gitlab ci demo
 
 * experiment with multiple upstream repos
 
+  How To Use git with Multiple Remote Repositories, by Anthony Heddings
+  [How To Use git with Multiple Remote Repositories](https://www.cloudsavvyit.com/2464/how-to-use-git-with-multiple-remote-repositories/)
+
   from `github`
 
     git remote add gitlab git@gitlab.com:michaeldallen/pegboard.git
