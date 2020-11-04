@@ -48,6 +48,9 @@ gitlab ci demo
           
   * part of Atlassian's excellent tutorial [git syncing](https://www.atlassian.com/git/tutorials/syncing)
 
+  * [Using git with multiple remote repositories](https://mmikowski.github.io/git-cross-origin/)
+    by Michael S. Mikowski
+
 ## markdown
 
 * sigh ... as always
