@@ -24,8 +24,9 @@ gitlab ci demo
 
   * [How To Use git with Multiple Remote Repositories](https://www.cloudsavvyit.com/2464/how-to-use-git-with-multiple-remote-repositories/), by Anthony Heddings
   
-  <a name="magic"></a>
-  * [pull/push from multiple remote locations](https://stackoverflow.com/questions/849308/pull-push-from-multiple-remote-locations), from [Malvineous](https://stackoverflow.com/users/308237/malvineous) on from stackoverflow
+  * <a name="magic"></a>
+    [pull/push from multiple remote locations](https://stackoverflow.com/questions/849308/pull-push-from-multiple-remote-locations)
+    from [Malvineous](https://stackoverflow.com/users/308237/malvineous)
     
         git remote set-url origin --push --add git@gitlab.com:michaeldallen/pegboard.git
         git remote set-url origin --push --add git@github.com:michaeldallen/pegboard.git
