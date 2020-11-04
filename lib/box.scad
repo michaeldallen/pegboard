@@ -1,62 +1,60 @@
 
-module tube(od, id, h, r = 1) {
+module hollow_box(xin, xout, yin, yout, zin, zout, r = 1) {
+
+    xinwidth = xin / 2;
+    yinwidth = yin / 2;
+    zinwidth = zin / 2;
     
-    color("green") 
-    translate([0, 0, r]) 
-        rotate_extrude() 
-            translate([id / 2 + ((od - id) / 4), 0, 0])  
-                    hull() {
-                        translate([((od - id) / 4) - r, 0, 0]) 
-                            circle(r = r);
-                        translate([-1 * (((od - id) / 4) - r), 0, 0])
-                            circle(r = r);
-                    }
-                
-            
-    color("red")
-    translate([0, 0, h - r])
-        rotate_extrude() 
-            translate([id / 2 + ((od - id) / 4), 0, 0])  
-                    hull() {
-                        translate([((od - id) / 4) - r, 0, 0]) 
-                            circle(r = r);
-                        translate([-1 * (((od - id) / 4) - r), 0, 0])
-                            circle(r = r);
-                    }
-                    
-    color("blue")
-    translate([0, 0,  (h / 2)])
-        rotate_extrude() 
-            translate([(id / 2) + ((od - id) / 4), 0, 0])
-                square([(od - id) / 2, h - (r * 2)], center = true);
-                
-            
+    xoutwidth = xout / 2;
+    youtwidth = yout / 2;
+    zoutwidth = zout / 2;
+    
+    translate([-(xinwidth + r), 0, 0]) {
+//        hull() {
+            color("orange") translate([0,   yinwidth + r ,   zinwidth + r]) sphere(r = r);
+            color("red")    translate([0, -(yinwidth + r),   zinwidth + r]) sphere(r = r);
+            color("green")  translate([0, -(yinwidth + r), -(zinwidth + r)]) sphere(r = r);    
+            color("blue")   translate([0,   yinwidth + r , -(zinwidth + r)]) sphere(r = r);
+
+            color("yellow") translate([0,   youtwidth + r ,   zoutwidth + r]) sphere(r = r);
+            color("pink")    translate([0, -(youtwidth + r),   zoutwidth + r]) sphere(r = r);
+            color("black")  translate([0, -(youtwidth + r), -(zoutwidth + r)]) sphere(r = r);    
+            color("white")   translate([0,   youtwidth + r , -(zoutwidth + r)]) sphere(r = r);
+
+//        }
         
-    
+        hull() {
+            color("orange") translate([0,   yinwidth + r ,   zinwidth + r]) sphere(r = r);
+            color("red")    translate([0, -(yinwidth + r),   zinwidth + r]) sphere(r = r);
+            color("yellow") translate([0,   youtwidth + r ,   zoutwidth + r]) sphere(r = r);
+            color("pink")    translate([0, -(youtwidth + r),   zoutwidth + r]) sphere(r = r);
+        }
+        
+  
+    }
+
+ 
+    translate([xinwidth + r, 0, 0]) {
+        hull() {
+            color("orange") translate([0,   yinwidth + r ,   zinwidth + r]) sphere(r = r);
+            color("red")    translate([0, -(yinwidth + r),   zinwidth + r]) sphere(r = r);
+            color("green")  translate([0, -(yinwidth + r), -(zinwidth + r)]) sphere(r = r);    
+            color("blue")   translate([0,   yinwidth + r , -(zinwidth + r)]) sphere(r = r);
+        }
+    }
+
+      
+
+
+
 
    
 }
 
-module hollow_tube(od, id, h, r = 1) {
-    tube(od, id, h, r);
-}
 
-module solid_tube(od, id = 0, h, r = 1) {
-    union() {
-        tube(od, id, h, r);
-        color("orange") cylinder(d = (od - (r * 2)), h = h);
-    }
-}
+$fn = 25;
 
-
-
-solid_tube(od = 10, h = 50);
-
-
-hollow_tube(od = 40, id = 20, h = 30, r = 2);
-
-translate([40, 0, 0])
-    hollow_tube(od = 20, id = 10, h = 3, r = 1);
-
-translate([40, 30, 0])
-    solid_tube(od = 20, h = 7, r = 2);
+color("blue")   translate([0, 0, 0]) rotate([ 0, 90, 0]) cylinder(d = 5, h = 20, center = true);
+color("orange") translate([0, 0, 0]) rotate([90,  0, 0]) cylinder(d = 5, h = 30, center = true);
+color("pink")   translate([0, 0, 0]) rotate([ 0,  0, 0]) cylinder(d = 5, h = 50, center = true);
+hollow_box(xin = 20, xout = 30, yin = 30, yout = 40, zin = 50, zout = 60, r = 1);
