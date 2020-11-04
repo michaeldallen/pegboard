@@ -20,8 +20,8 @@ create stl from scad:
       - .gitlab-ci.yml
 
   script:
-    - sudo apt-get update
-    - sudo apt-get install --assume-yes git-restore-mtime
+    - apt-get update
+    - apt-get install --assume-yes git-restore-mtime
     - ls -lR | tee a
     - /usr/lib/git-core/git-restore-mtime
     - ls -lR | tee b
