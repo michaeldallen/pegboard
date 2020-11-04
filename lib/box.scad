@@ -1,60 +1,62 @@
 
-module hollow_box(xin, xout, yin, yout, zin, zout, r = 1) {
 
-    xinwidth = xin / 2;
-    yinwidth = yin / 2;
-    zinwidth = zin / 2;
-    
-    xoutwidth = xout / 2;
-    youtwidth = yout / 2;
-    zoutwidth = zout / 2;
-    
-    translate([-(xinwidth + r), 0, 0]) {
-//        hull() {
-            color("orange") translate([0,   yinwidth + r ,   zinwidth + r]) sphere(r = r);
-            color("red")    translate([0, -(yinwidth + r),   zinwidth + r]) sphere(r = r);
-            color("green")  translate([0, -(yinwidth + r), -(zinwidth + r)]) sphere(r = r);    
-            color("blue")   translate([0,   yinwidth + r , -(zinwidth + r)]) sphere(r = r);
 
-            color("yellow") translate([0,   youtwidth + r ,   zoutwidth + r]) sphere(r = r);
-            color("pink")    translate([0, -(youtwidth + r),   zoutwidth + r]) sphere(r = r);
-            color("black")  translate([0, -(youtwidth + r), -(zoutwidth + r)]) sphere(r = r);    
-            color("white")   translate([0,   youtwidth + r , -(zoutwidth + r)]) sphere(r = r);
 
-//        }
-        
-        hull() {
-            color("orange") translate([0,   yinwidth + r ,   zinwidth + r]) sphere(r = r);
-            color("red")    translate([0, -(yinwidth + r),   zinwidth + r]) sphere(r = r);
-            color("yellow") translate([0,   youtwidth + r ,   zoutwidth + r]) sphere(r = r);
-            color("pink")    translate([0, -(youtwidth + r),   zoutwidth + r]) sphere(r = r);
-        }
-        
-  
+module box(xin, xout, yin, yout, height, corner_radius = 0, bottom = 0) {
+    minkowski() {
+        difference() {
+            cube([xout - (corner_radius * 2), yout - (corner_radius * 2), height - (corner_radius * 2)], center = true);
+            cube([xin + (corner_radius * 2), yin + (corner_radius * 2), height - (corner_radius * 2)], center = true);
+        }        
+        sphere(r = corner_radius);
     }
-
- 
-    translate([xinwidth + r, 0, 0]) {
-        hull() {
-            color("orange") translate([0,   yinwidth + r ,   zinwidth + r]) sphere(r = r);
-            color("red")    translate([0, -(yinwidth + r),   zinwidth + r]) sphere(r = r);
-            color("green")  translate([0, -(yinwidth + r), -(zinwidth + r)]) sphere(r = r);    
-            color("blue")   translate([0,   yinwidth + r , -(zinwidth + r)]) sphere(r = r);
-        }
+    if(bottom) {
+        translate([0, 0, -1 * ((height - bottom) / 2)]) color("red")
+        cube([xin + ((xout - xin) / 2), yin + ((yout - yin) / 2), bottom], center = true);
     }
-
-      
-
-
-
-
-   
 }
+
+
+
 
 
 $fn = 25;
 
-color("blue")   translate([0, 0, 0]) rotate([ 0, 90, 0]) cylinder(d = 5, h = 20, center = true);
-color("orange") translate([0, 0, 0]) rotate([90,  0, 0]) cylinder(d = 5, h = 30, center = true);
-color("pink")   translate([0, 0, 0]) rotate([ 0,  0, 0]) cylinder(d = 5, h = 50, center = true);
-hollow_box(xin = 20, xout = 30, yin = 30, yout = 40, zin = 50, zout = 60, r = 1);
+
+
+xin = 20;
+xout = 30;
+yin = 40;
+yout = 50;
+height = 60;
+corner_radius = 1;
+bottom_thickness = 2; 
+
+
+color("blue")  
+    translate([0, 0, 0]) {
+        cube([xin, corner_radius / 4, corner_radius * 4], center = true);
+        rotate([ 0, 90, 0]) {
+            cylinder(d = corner_radius * 2, h = xout, center = true);
+        }
+    }
+    
+color("orange")
+    translate([0, 0, 0]) {
+        cube([corner_radius / 4, yin, corner_radius * 4], center = true);
+        rotate([90,  0, 0]) {
+            cylinder(d = corner_radius * 2, h = yout, center = true);
+        }
+    }
+    
+color("pink")
+    translate([0, 0, 0]) {
+        cube([corner_radius / 4, corner_radius * 4, height], center = true);
+        rotate([ 0,  0, 0]) {
+            cylinder(d = corner_radius * 2, h = height, center = true);
+        }
+    }
+
+
+
+box(xin, xout, yin, yout, height, corner_radius, bottom_thickness);
