@@ -15,7 +15,7 @@ create stl from scad:
     refs:
       - main
     changes:
-      - **/*.scad
+      - /**/*.scad
       - Makefile
 
   script:
