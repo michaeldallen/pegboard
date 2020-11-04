@@ -46,7 +46,7 @@ gitlab ci demo
         git remote -v
         git push github main
           
-
+  * part of Atlassian's excellent tutorial [git syncing](https://www.atlassian.com/git/tutorials/syncing)
 
 ## markdown
 
