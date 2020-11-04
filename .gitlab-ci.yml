@@ -22,10 +22,10 @@ create stl from scad:
   script:
     - apt-get update
     - apt-get install --assume-yes git-restore-mtime
-    - ls -lR | tee a
+    - ls -lR | tee /tmp/a
     - /usr/lib/git-core/git-restore-mtime
-    - ls -lR | tee b
-    - diff --side-by-side a b || true
+    - ls -lR | tee /tmp/b
+    - diff --side-by-side /tmp/a /tmp/b || true
     - make --version
     - openscad --help
     - pwd
