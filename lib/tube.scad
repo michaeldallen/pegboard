@@ -41,10 +41,23 @@ module hollow_tube(od, id, h, r = 1) {
     tube(od, id, h, r);
 }
 
-module solid_tube(od, id = 0, h, r = 1) {
-    union() {
-        tube(od, id, h, r);
-        color("orange") cylinder(d = (od - (r * 2)), h = h);
+module solid_tube(od, h, r = 1) {
+    
+    //color("pink") translate([0, 0, -20]) cylinder(d = od, h = 2, center = true);
+
+    color("orange") 
+    hull() {
+        color("green") 
+        translate([0, 0, r]) 
+            rotate_extrude()
+                translate([(od / 2) - r, 0, 0])  
+                    circle(r = r);
+
+        color("red")
+        translate([0, 0, h - (r * 2)])
+            rotate_extrude() 
+                translate([(od / 2) - r, 0, 0])  
+                    circle(r = r);
     }
 }
 
@@ -60,3 +73,7 @@ translate([40, 0, 0])
 
 translate([40, 30, 0])
     solid_tube(od = 20, h = 7, r = 2);
+
+
+translate([-40, 0, 0]) solid_tube(od = 22.375, h = 13.1875, r = 1);
+
