@@ -26,15 +26,10 @@ create stl from scad:
     - /usr/lib/git-core/git-restore-mtime
     - ls -lR | tee /tmp/b
     - diff --side-by-side /tmp/a /tmp/b || true
-    - make --version
-    - openscad --help
-    - pwd
-    - ls -lR
     - echo Finny is here
     - date
     - make all
     - date
-    - ls -lR
     
   artifacts:
     paths:
