@@ -30,7 +30,7 @@ create stl from scad:
     - date
     - make all
     - date
-    - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t > /tmp/b
+    - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t 
     
   artifacts:
     paths:
