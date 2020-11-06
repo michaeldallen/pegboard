@@ -20,7 +20,7 @@ create stl from scad:
       - .gitlab-ci.yml
 
   script:
-    - apt-get update 
+    - apt-get update
     - apt-get install --assume-yes git-restore-mtime bsdmainutils
     - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t > /tmp/a
     - /usr/lib/git-core/git-restore-mtime
@@ -30,8 +30,8 @@ create stl from scad:
     - date
     - make all
     - date
-    - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t 
-    
+    - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t
+
   artifacts:
     paths:
       - artifacts
