@@ -20,16 +20,17 @@ create stl from scad:
       - .gitlab-ci.yml
 
   script:
-    - apt-get update
+    - apt-get update 
     - apt-get install --assume-yes git-restore-mtime
-    - ls -lR | tee /tmp/a
+    - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t > /tmp/a
     - /usr/lib/git-core/git-restore-mtime
-    - ls -lR | tee /tmp/b
-    - diff --side-by-side /tmp/a /tmp/b || true
+    - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t > /tmp/b
+    - diff --ignore-space-change --side-by-side /tmp/a /tmp/b || true
     - echo Finny is here
     - date
     - make all
     - date
+    - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t > /tmp/b
     
   artifacts:
     paths:
