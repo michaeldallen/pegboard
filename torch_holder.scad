@@ -19,7 +19,7 @@ plate_thickness = base_size / 8;
 use <lib/cover.scad>;
 use <lib/tube.scad>;
 
-tube_id = 28;
+tube_id = 68;
 tube_od = tube_id + (plate_thickness * 2);
 
 
