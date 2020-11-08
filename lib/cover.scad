@@ -1,23 +1,11 @@
-
+include <defaults.scad>
+use <bar.scad>
 
 
 
 base_size = 25.5;
 plate_thickness = base_size / 8;
 
-
-
-
-module bar(roundcorner = 1, x = base_size, y = base_size, z = plate_thickness, color = "purple") {
-    translate([roundcorner, roundcorner, roundcorner]) {
-        color(color) {
-            minkowski() {
-                cube([x - (roundcorner * 2), y - (roundcorner * 2), z - (roundcorner * 2)]);
-                sphere(d = roundcorner * 2);
-            }
-        }
-    }
-}
 
 
 
