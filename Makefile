@@ -59,5 +59,10 @@ everything all :
 		[ -r $$s ] && ${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl ; \
 	done
 
+readme.gitlab_container_registry:
+	@echo docker login registry.gitlab.com
+	@echo docker build -t registry.gitlab.com/michaeldallen/pegboard:2020.11 .
+	@echo  docker push registry.gitlab.com/michaeldallen/pegboard:2020.11
+
 #EOF
 
