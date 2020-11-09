@@ -19,9 +19,11 @@ create stl from scad:
       - Makefile
       - .gitlab-ci.yml
 
-  script:
+  before_script:
     - apt-get update
     - apt-get install --assume-yes git-restore-mtime bsdmainutils
+
+  script:
     - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t > /tmp/a
     - /usr/lib/git-core/git-restore-mtime
     - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t > /tmp/b
