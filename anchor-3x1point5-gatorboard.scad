@@ -77,35 +77,36 @@ module base(color = "purple", thickness = one_eighth, radius = 2) {
 
 
 
-
-color("orange") hull () {
-    base();
-    translate([0, base_size, 0]) base();
-    translate([0, base_size * 2, 0]) base();
+hull() {
+    color("orange") {
+        translate([0,0,0]) {
+            base();
+            // translate([0, base_size, 0]) base();
+            translate([0, base_size * 2, 0]) base();
+        }
+    }
+    color("magenta") {
+        translate([base_size / 2, 0, 0]) {
+            base();
+            // translate([0, base_size, 0]) base();
+            translate([0, base_size * 2, 0]) base();
+        }
+    }
 }
-color("magenta") translate([base_size / 2, 0, 0]) hull () {
-    base();
-    translate([0, base_size, 0]) base();
 
-    translate([0, base_size * 2, 0]) base();
-}
 //translate([base_size - plate_thickness, 0, 0]) cube([base_size/2, base_size, plate_thickness]);
 
 
-pad();
-//horn(5);// for wall control 
+hull() {
+    pad();
+//    translate([0, base_size, 0]) pad();
+    translate([0, base_size * 2, 0]) pad();
+}
+
 horn(0);// for gatorboard
+translate([0, base_size, 0]) horn(0);
+translate([0, base_size * 2, 0]) horn(0);
 
-translate([0, base_size, 0]) {
-    pad();
-    //horn(5);// for wall control 
-    horn(0);// for gatorboard
-}
 
-translate([0, base_size * 2, 0]) {
-    pad();
-    //horn(5);// for wall control 
-    horn(0);// for gatorboard
-}
 
 
