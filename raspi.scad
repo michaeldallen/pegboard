@@ -5,13 +5,13 @@ use <lib/tube.scad>
 
 pcb_thickness = 1.25;
 
-standoff_post_diameter = 6;
+standoff_post_diameter = 5.25;
 standoff_pin_diameter = 2.5;
-standoff_post_height = 5;
+standoff_post_height = (plate_thickness * 4) - 3;
 standoff_pin_height = 2;
 
 
-module standoff(center_x = false, center_y = false, center_z = false) {
+module standoff(center_x = true, center_y = true, center_z = false) {
     
     x_offset = center_x ? 0 : standoff_post_diameter / 2;
     y_offset = center_y ? 0 : standoff_post_diameter / 2;
@@ -29,19 +29,26 @@ module standoff(center_x = false, center_y = false, center_z = false) {
 pin_to_pin_longside = 58;
 pin_to_pin_shortside = 49;
 
+pcb_width = 56;
+pcb_length = 85;
+
+
 $fn = 25;
 
-bar(pin_to_pin_longside + standoff_post_diameter, pin_to_pin_shortside + standoff_post_diameter, plate_thickness);
+// pcb plate
+//bar(pcb_width, pcb_length, plate_thickness, center_x = true, center_y = true);
+
+// 3x3 cover plate
+//translate([0,0,-10]) 
+color("cyan") bar((base_size * 3) - (plate_thickness * 4), (base_size * 3) - (plate_thickness * 4), plate_thickness, center_x = true, center_y = true);
+color("pink") bar((base_size * 3) - (plate_thickness * 2.125), (base_size * 3) - (plate_thickness * 2.125), plate_thickness * (0.875), center_x = true, center_y = true);
 
 
-standoff();
-translate([pin_to_pin_longside, 0, 0]) 
-    standoff();
-translate([pin_to_pin_longside, pin_to_pin_shortside, 0]) 
-    standoff();
-translate([0, pin_to_pin_shortside, 0]) 
-    standoff();
-
-
-
+for (ss = [-1, 1]) {
+    for(ls = [-1, 1]) {
+        translate([ss * (pin_to_pin_shortside / 2), ls * (pin_to_pin_longside / 2), 0]) {
+            standoff();
+        }
+    }
+}
 
