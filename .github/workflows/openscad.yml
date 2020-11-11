@@ -11,38 +11,19 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  sanity:
+    sanity:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+        runs-on: ubuntu-20.04
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
+        steps:
+          - name: configure apt
+            run: |
+                date
+                sudo apt-get update
+                date
 
-    - name: install openscad a
-      run: |
-          date
-          sudo sh -c "echo 'deb     http://ppa.launchpad.net/openscad/releases/ubuntu focal main' >> /etc/apt/sources.list.d/openscad.list"
-          sudo sh -c "echo 'deb-src http://ppa.launchpad.net/openscad/releases/ubuntu focal main' >> /etc/apt/sources.list.d/openscad.list"
-          sudo apt-get update
-          date
-
-    - name: install openscad b
-      run: date && sudo apt-get install --assume-yes ca-certificates git make
-
-    - name: install openscad c
-      run: |
-          date && sudo apt-cache search openscad
-          find /etc/apt -type f | sort
-
-    - name: install openscad d
-      run: date && sudo apt-get install --assume-yes openscad
-
-    - name: install openscad e
-      run: date && sudo rm -rf /var/lib/apt/lists/*
-
-    - name: install openscad f
-      run: date && sudo mkdir -p /root/.local/share /.local/share
-
+          - name: install support packages
+            run: |
+                date
+                sudo apt-get install --assume-yes ca-certificates git make
+                date
