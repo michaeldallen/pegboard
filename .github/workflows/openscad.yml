@@ -28,7 +28,7 @@ jobs:
           make \
           openscad \
         && rm -rf /var/lib/apt/lists/*
-      run: mkdir -p /root/.local/share /.local/share
+      mkdir -p /root/.local/share /.local/share
       
 
       
