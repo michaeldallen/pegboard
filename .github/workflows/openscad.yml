@@ -40,6 +40,18 @@ jobs:
       with:
         fetch-depth: 0
                 
+
+
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        # npm cache files are stored in `~/.npm` on Linux/macOS
+        path: ~/cache
+        key: pegboard-cache
+        restore-keys: pegboard-cache
+
             
     - name: check environment before
       run: |
