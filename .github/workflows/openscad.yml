@@ -21,7 +21,8 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
     - name: install openscad
-      run: sudo apt-get update && apt-get install -y --no-install-recommends ca-certificates git make openscad && sudo rm -rf /var/lib/apt/lists/* ; sudo mkdir -p /root/.local/share /.local/share
+      run: |
+          sudo apt-get update && apt-get install -y --no-install-recommends ca-certificates git make openscad && sudo rm -rf /var/lib/apt/lists/* ; sudo mkdir -p /root/.local/share /.local/share
       
 
       
