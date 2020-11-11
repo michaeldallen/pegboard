@@ -48,15 +48,24 @@ cache/%.stl : %.scad
 	@echo .
 	@echo .
 
+cache/%.png : %.scad
+	[ -d cache ] || mkdir -v cache
+	date
+	time ${OPENSCAD} -d $@.deps -o $@ $<
+	date
+	@echo .
+	@echo .
+	@echo .
 
-artifacts/%.stl : cache/%.stl
+
+artifacts/% : cache/%
 	@[ -d artifacts ] || mkdir -v artifacts
 	cp $< $@
 
 
 everything all :
 	@for s in *.scad ; do \
-		[ -r $$s ] && ${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl ; \
+		[ -r $$s ] && ${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl artifacts/$$(basename $$s .scad).png ; \
 	done
 
 readme.gitlab_container_registry:
