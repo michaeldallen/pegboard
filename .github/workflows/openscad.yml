@@ -71,7 +71,7 @@ jobs:
     - name: wth
       run: |
         date
-        make cache/cube.stl
+        make all
         date
 
     - name: check environment after
