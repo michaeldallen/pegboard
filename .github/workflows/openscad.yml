@@ -23,13 +23,13 @@ jobs:
     - name: install openscad
       run: |
           date
-          echo sudo apt-get update
+          sudo apt-get update
           date
-          echo sudo apt-get install -y --no-install-recommends ca-certificates git make openscad
+          sudo apt-get install -y --no-install-recommends ca-certificates git make openscad
           date
-          echo sudo rm -rf /var/lib/apt/lists/*
+          sudo rm -rf /var/lib/apt/lists/*
           date
-          echo sudo mkdir -p /root/.local/share /.local/share
+          sudo mkdir -p /root/.local/share /.local/share
           date
       
 
