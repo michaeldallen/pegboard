@@ -39,5 +39,10 @@ jobs:
                 openscad --help
                 date
                 
-
+          - name: check environment
+            run: |
+                date
+                find * -type f | sort
+                date
+                
     
