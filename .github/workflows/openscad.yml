@@ -20,17 +20,16 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
-    - name: install openscad
-      run: |
-          date
-          sudo apt-get update
-          date
-          sudo apt-get install --assume-yes ca-certificates git make openscad
-          date
-          sudo rm -rf /var/lib/apt/lists/*
-          date
-          sudo mkdir -p /root/.local/share /.local/share
-          date
-      
 
-      
+    - name: install openscad a
+      run: date && sudo apt-get update
+
+    - name: install openscad a
+      run: date && sudo apt-get install --assume-yes ca-certificates git make openscad
+
+    - name: install openscad a
+      run: date && sudo rm -rf /var/lib/apt/lists/*
+
+    - name: install openscad a
+      run: date && sudo mkdir -p /root/.local/share /.local/share
+
