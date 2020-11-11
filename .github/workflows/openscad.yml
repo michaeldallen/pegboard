@@ -25,7 +25,7 @@ jobs:
           date
           sudo apt-get update
           date
-          sudo apt-get install -y --no-install-recommends ca-certificates git make openscad
+          sudo apt-get install --assume-yes ca-certificates git make openscad
           date
           sudo rm -rf /var/lib/apt/lists/*
           date
