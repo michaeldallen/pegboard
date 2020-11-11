@@ -26,10 +26,13 @@ jobs:
             run: |
                 date
                 sudo apt-get install --assume-yes \
+                    bsdmainutils \
                     ca-certificates \
                     git \
+                    git-restore-mtime \
                     make \
-                    openscad
+                    openscad \
+                    #
                 date
 
           - name: install openscad
@@ -42,11 +45,12 @@ jobs:
           - name: checkout
             uses: actions/checkout@v2
             
-          - name: check environment
+          - name: check environment before
             run: |
                 date
                 pwd
                 find * -type f | sort
+                ls -lR
                 date
                 
     
@@ -56,3 +60,12 @@ jobs:
                 make cache/cube.stl
                 date
 
+          - name: check environment before
+            run: |
+                date
+                pwd
+                find * -type f | sort
+                ls -lR
+                date
+                
+    
