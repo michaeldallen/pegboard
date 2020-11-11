@@ -28,7 +28,8 @@ jobs:
                 sudo apt-get install --assume-yes \
                     ca-certificates \
                     git \
-                    make
+                    make \
+                    openscad
                 date
 
           - name: install openscad
