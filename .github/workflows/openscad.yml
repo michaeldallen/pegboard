@@ -50,3 +50,9 @@ jobs:
                 date
                 
     
+          - name: wth
+            run: |
+                date
+                make cache/cube.stl
+                date
+
