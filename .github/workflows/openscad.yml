@@ -44,6 +44,8 @@ jobs:
     - name: check environment before
       run: |
         date
+        env | sort
+        date
         pwd
         find * -type f | sort
         ls -lR
