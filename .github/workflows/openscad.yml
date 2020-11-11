@@ -28,7 +28,9 @@ jobs:
       run: date && sudo apt-get install --assume-yes ca-certificates git make
 
     - name: install openscad c
-      run: date && sudo apt-cache search openscad
+      run: |
+          date && sudo apt-cache search openscad
+          find /etc/apt -type f | sort
 
     - name: install openscad d
       run: date && sudo apt-get install --assume-yes openscad
