@@ -38,10 +38,14 @@ jobs:
                 sudo apt-get install openscad
                 openscad --help
                 date
-                
+
+          - name: checkout
+            uses: actions/checkout@v2
+            
           - name: check environment
             run: |
                 date
+                pwd
                 find * -type f | sort
                 date
                 
