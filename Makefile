@@ -31,6 +31,7 @@ diag :
 clean :
 	find * -type f -name '*~' -exec rm -v {} \; ${INDENT}
 	find * -type f -name '*.stl' -exec rm -v {} \; ${INDENT}
+	find * -type f -name '*.png' -exec rm -v {} \; ${INDENT}
 	find * -name '*.deps' -exec rm -v {} \; ${INDENT}
 	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
 	([ -d cache ] && rmdir cache || true) ${INDENT}
@@ -39,16 +40,7 @@ tidy :
 	find artifacts -type f -name '*.stl' -exec rm -v {} \; ${INDENT}
 	([ -d artifacts ] && rmdir artifacts || true) ${INDENT}
 
-cache/%.stl : %.scad
-	[ -d cache ] || mkdir -v cache
-	date
-	time ${OPENSCAD} -d $@.deps -o $@ $<
-	date
-	@echo .
-	@echo .
-	@echo .
-
-cache/%.png : %.scad
+cache/%.stl cache/%.png: %.scad
 	[ -d cache ] || mkdir -v cache
 	date
 	time xvfb-run ${OPENSCAD} -d $@.deps -o $@ $<
@@ -56,6 +48,7 @@ cache/%.png : %.scad
 	@echo .
 	@echo .
 	@echo .
+
 
 
 artifacts/% : cache/%
