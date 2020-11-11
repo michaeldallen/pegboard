@@ -34,7 +34,7 @@ jobs:
           - name: install openscad
             run: |
                 date
-                apt-cache search openscad
+                apt-get install openscad
                 date
                 
 
