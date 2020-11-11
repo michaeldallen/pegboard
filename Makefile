@@ -5,7 +5,7 @@ else ifeq ($(shell uname -s),Linux)
 endif
 
 
-.PRECIOUS: cache/%.stl
+.PRECIOUS: cache/%.stl cache/%.png
 
 SHELL := bash
 
