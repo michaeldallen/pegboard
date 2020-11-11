@@ -25,11 +25,17 @@ jobs:
       run: date && sudo apt-get update
 
     - name: install openscad b
-      run: date && sudo apt-get install --assume-yes ca-certificates git make openscad
+      run: date && sudo apt-get install --assume-yes ca-certificates git make
 
     - name: install openscad c
-      run: date && sudo rm -rf /var/lib/apt/lists/*
+      run: date && sudo apt-cache search openscad
 
     - name: install openscad d
+      run: date && sudo apt-get install --assume-yes openscad
+
+    - name: install openscad e
+      run: date && sudo rm -rf /var/lib/apt/lists/*
+
+    - name: install openscad f
       run: date && sudo mkdir -p /root/.local/share /.local/share
 
