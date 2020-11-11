@@ -13,13 +13,22 @@ jobs:
   # This workflow contains a single job called "greet"
   sanity:
     # The type of runner that the job will run on
-    runs-on: registry.gitlab.com/michaeldallen/pegboard:2020.11
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
+    - name: install openscad
+      run: |
+        apt-get update && apt-get install -y --no-install-recommends \
+	        ca-certificates \
+	        git \
+	        make \
+	        openscad \
+        && rm -rf /var/lib/apt/lists/*
+      run: mkdir -p /root/.local/share /.local/share
       
 
       
