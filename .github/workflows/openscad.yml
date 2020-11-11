@@ -80,3 +80,12 @@ jobs:
         find * -type f | sort
         ls -lR
         date
+
+
+    - name: save artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: stl files
+        path: artifacts
+
+
