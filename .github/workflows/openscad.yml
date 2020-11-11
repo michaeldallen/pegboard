@@ -21,6 +21,5 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
       
-    - name: check for openscad installation
-      run: openscad --help
+
       
