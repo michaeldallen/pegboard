@@ -11,66 +11,60 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
-    compile_openscad_files:
+  compile_openscad_files:
 
-        runs-on: ubuntu-20.04
+    runs-on: ubuntu-20.04
 
-        steps:
-          - name: configure apt
-            run: |
-                date
-                sudo apt-get update
-                date
+    steps:
+    - name: configure apt
+      run: |
+        date
+        sudo apt-get update
+        date
 
-          - name: install support packages
-            run: |
-                date
-                sudo apt-get install --assume-yes \
-                    bsdmainutils \
-                    ca-certificates \
-                    git \
-                    git-restore-mtime \
-                    make \
-                    openscad \
-                    #
-                date
+    - name: install support packages
+      run: |
+        date
+        sudo apt-get install --assume-yes \
+        bsdmainutils \
+        ca-certificates \
+        git \
+        git-restore-mtime \
+        make \
+        openscad \
+        #
+        date
 
-          - name: install openscad
-            run: |
-                date
-                sudo apt-get install openscad
-                openscad --help
-                date
-
-          - name: checkout
-            uses: actions/checkout@v2
+    - name: checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+                
             
-          - name: check environment before
-            run: |
-                date
-                pwd
-                find * -type f | sort
-                ls -lR
-                date
-                /usr/lib/git-core/git-restore-mtime
-                find * -type f | sort
-                ls -lR
-                date
+    - name: check environment before
+      run: |
+        date
+        pwd
+        find * -type f | sort
+        ls -lR
+        date
+        /usr/lib/git-core/git-restore-mtime
+        find * -type f | sort
+        ls -lR
+        date
 
                 
     
-          - name: wth
-            run: |
-                date
-                make cache/cube.stl
-                date
+    - name: wth
+      run: |
+        date
+        make cache/cube.stl
+        date
 
-          - name: check environment after
-            run: |
-                date
-                pwd
-                find * -type f | sort
-                ls -lR
-                date
-                
-    
+    - name: check environment after
+      run: |
+        date
+        pwd
+        find * -type f | sort
+        ls -lR
+        date
