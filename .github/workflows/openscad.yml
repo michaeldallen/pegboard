@@ -10,9 +10,9 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-    check_sanity:
-    # The type of runner that the job will run on
+
+    compile_openscad_files:
+
         runs-on: ubuntu-20.04
 
         steps:
@@ -36,7 +36,8 @@ jobs:
             run: |
                 date
                 sudo apt-get install openscad
+                openscad --help
                 date
                 
 
-
+    
