@@ -51,7 +51,7 @@ cache/%.stl : %.scad
 cache/%.png : %.scad
 	[ -d cache ] || mkdir -v cache
 	date
-	time ${OPENSCAD} -d $@.deps -o $@ $<
+	time env DISPLAY=:0 ${OPENSCAD} -d $@.deps -o $@ $<
 	date
 	@echo .
 	@echo .
