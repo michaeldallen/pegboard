@@ -42,11 +42,14 @@ jobs:
                 
 
 
-    - name: Cache stl 
+    - name: Cache stl
+      id: cache-stl
       uses: actions/cache@v2
       with:
-        path: ~/cache
-        key: pegboard-cache
+        path: cache
+        key: pegboard-cache-${{ github.sha }}
+        restore-keys: pegboard-cache
+        
 
             
     - name: check environment before
