@@ -34,7 +34,7 @@ jobs:
           - name: install openscad
             run: |
                 date
-                apt-get install openscad
+                sudo apt-get install openscad
                 date
                 
 
