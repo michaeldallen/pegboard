@@ -24,8 +24,8 @@ jobs:
     - name: install openscad a
       run: |
           date
-          echo 'deb http://ppa.launchpad.net/openscad/releases/ubuntu focal main' | sudo tee -a /etc/apt/sources.list.d/openscad.list
-          sudo 'deb-src http://ppa.launchpad.net/openscad/releases/ubuntu focal main'  | sudo tee -a >> /etc/apt/sources.list.d/openscad.list
+          sudo sh -c "echo 'deb     http://ppa.launchpad.net/openscad/releases/ubuntu focal main' >> /etc/apt/sources.list.d/openscad.list"
+          sudo sh -c "echo 'deb-src http://ppa.launchpad.net/openscad/releases/ubuntu focal main' >> /etc/apt/sources.list.d/openscad.list"
           sudo apt-get update
           date
 
