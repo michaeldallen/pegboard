@@ -25,5 +25,8 @@ jobs:
           - name: install support packages
             run: |
                 date
-                sudo apt-get install --assume-yes ca-certificates git make
+                sudo apt-get install --assume-yes \
+                    ca-certificates \
+                    git \
+                    make
                 date
