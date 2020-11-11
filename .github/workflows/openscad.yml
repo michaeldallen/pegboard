@@ -24,12 +24,12 @@ jobs:
     - name: install openscad a
       run: date && sudo apt-get update
 
-    - name: install openscad a
+    - name: install openscad b
       run: date && sudo apt-get install --assume-yes ca-certificates git make openscad
 
-    - name: install openscad a
+    - name: install openscad c
       run: date && sudo rm -rf /var/lib/apt/lists/*
 
-    - name: install openscad a
+    - name: install openscad d
       run: date && sudo mkdir -p /root/.local/share /.local/share
 
