@@ -23,10 +23,10 @@ jobs:
     - name: install openscad
       run: |
         apt-get update && apt-get install -y --no-install-recommends \
-	        ca-certificates \
-	        git \
-	        make \
-	        openscad \
+          ca-certificates \
+          git \
+          make \
+          openscad \
         && rm -rf /var/lib/apt/lists/*
       run: mkdir -p /root/.local/share /.local/share
       
