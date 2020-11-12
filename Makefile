@@ -58,7 +58,8 @@ artifacts/% : cache/%
 
 everything all :
 	@for s in *.scad ; do \
-		[ -r $$s ] && ${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl artifacts/$$(basename $$s .scad).png ; \
+				[ -r $$s ] && ${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl ; \
+		[ -r $$s ] && ${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).png ; \
 	done
 
 readme.gitlab_container_registry:
