@@ -25,7 +25,7 @@ create stl from scad:
     - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t > /tmp/a
     - /usr/lib/git-core/git-restore-mtime
     - (find * -depth -type d | while read d; do echo $d; done | while read d ; do ls -ld $d/* ; done ; ls -ld *) | column -t > /tmp/b
-    - diff --ignore-space-change --side-by-side /tmp/a /tmp/b || true
+    - diff --ignore-space-change --side-by-side --width=300 /tmp/a /tmp/b || true
     - echo Finny is here
     - date
     - make all
