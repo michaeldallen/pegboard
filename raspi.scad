@@ -73,7 +73,7 @@ for (ss = [1]) {
             translate([ss * (pin_to_pin_shortside / 2), ls * (pin_to_pin_longside / 2), 0]) {
                 //standoff();
                 solid_tube(od = standoff_post_diameter, h = standoff_post_height, r = 0.25);
-                translate([(standoff_post_diameter * ss) * 0.875, 0, 0]) {
+                translate([(standoff_post_diameter * ss) * 0.8, 0, 0]) {
                     solid_tube(od = standoff_post_diameter, h = standoff_post_height, r = 0.25);
                     /*
                     rotate([0, 0, (ss > 0 ? 180 : 0)]) {
@@ -87,7 +87,7 @@ for (ss = [1]) {
             translate([ss * (pin_to_pin_shortside / 2), ls * (pin_to_pin_longside / 2), 0]) {
                 //standoff();
         solid_tube(od = standoff_pin_diameter, h = standoff_post_height + standoff_pin_height, r = 0.25);
-                translate([(standoff_post_diameter * ss) * 0.875, 0, 0]) {
+                translate([(standoff_post_diameter * ss) * 0.8, 0, 0]) {
                     solid_tube(od = standoff_post_diameter, h = standoff_post_height, r = 0.25);
                     
 
