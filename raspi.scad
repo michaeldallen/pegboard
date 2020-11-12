@@ -13,7 +13,7 @@ pcb_thickness = 1.25;
 standoff_post_diameter = 5.25;
 standoff_pin_diameter = 2.5;
 standoff_post_height = (plate_thickness * 4) - 3;
-standoff_pin_height = 3;
+standoff_pin_height = 2;
 
 
 module standoff(center_x = true, center_y = true, center_z = false) {
@@ -43,7 +43,7 @@ module clip() {
             }
             translate([0, 0, -1 * (standoff_post_height / 2)])
                 cube([plate_thickness + 1, plate_thickness * 2, standoff_post_height], center = true);
-            translate([1, 0, -1 * (standoff_post_height / 2)])
+            translate([1.5, 0, -1 * (standoff_post_height / 2)])
                 cube([plate_thickness + 1, plate_thickness * 2, standoff_post_height * 2], center = true);
         }
     }
@@ -60,19 +60,45 @@ pcb_length = 85;
 
 // 3x3 cover plate
 //translate([0,0,-10]) 
-//color("cyan") bar((base_size * 3) - (plate_thickness * 4), (base_size * 3) - (plate_thickness * 4), plate_thickness, center_x = true, center_y = true, roundcorner_radius = 0);
-color("pink") bar((base_size * 3) - (plate_thickness * 2.125), (base_size * 3) - (plate_thickness * 2.125), plate_thickness * (0.875), center_x = true, center_y = true);
+translate([((base_size * 3) - (plate_thickness * 4))/4,0,0]) 
+    color("cyan") bar(((base_size * 3) - (plate_thickness * 4))/2, (base_size * 3) - (plate_thickness * 4), plate_thickness, center_x = true, center_y = true);
+
+translate([((base_size * 3) - (plate_thickness * 2.125))/4,0,0]) 
+    color("pink") bar(((base_size * 3) - (plate_thickness * 2.125))/2, (base_size * 3) - (plate_thickness * 2.125), plate_thickness * (0.875), center_x = true, center_y = true);
 
 
-for (ss = [-1, 1]) {
+for (ss = [1]) {
     for(ls = [-1, 1]) {
-        translate([ss * (pin_to_pin_shortside / 2), ls * (pin_to_pin_longside / 2), 0]) {
-            standoff();
-            translate([(standoff_post_diameter * ss) * 0.875, 0, 0])
-                rotate([0, 0, (ss > 0 ? 180 : 0)]) {
-                    clip();
+        hull() {
+            translate([ss * (pin_to_pin_shortside / 2), ls * (pin_to_pin_longside / 2), 0]) {
+                //standoff();
+                solid_tube(od = standoff_post_diameter, h = standoff_post_height, r = 0.25);
+                translate([(standoff_post_diameter * ss) * 0.875, 0, 0]) {
+                    solid_tube(od = standoff_post_diameter, h = standoff_post_height, r = 0.25);
+                    /*
+                    rotate([0, 0, (ss > 0 ? 180 : 0)]) {
+                        clip();
+                    }
+                    */
                 }
+            }
+            
         }
+            translate([ss * (pin_to_pin_shortside / 2), ls * (pin_to_pin_longside / 2), 0]) {
+                //standoff();
+        solid_tube(od = standoff_pin_diameter, h = standoff_post_height + standoff_pin_height, r = 0.25);
+                translate([(standoff_post_diameter * ss) * 0.875, 0, 0]) {
+                    solid_tube(od = standoff_post_diameter, h = standoff_post_height, r = 0.25);
+                    
+
+                    rotate([0, 0, (ss > 0 ? 180 : 0)]) {
+                        clip();
+                    }
+
+                }
+            }
+            
+
     }
 }
 
