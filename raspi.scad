@@ -13,7 +13,7 @@ pcb_thickness = 1.25;
 standoff_post_diameter = 5.25;
 standoff_pin_diameter = 2.5;
 standoff_post_height = (plate_thickness * 4) - 3;
-standoff_pin_height = 2;
+standoff_pin_height = 2.25;
 
 
 module standoff(center_x = true, center_y = true, center_z = false) {
@@ -28,9 +28,6 @@ module standoff(center_x = true, center_y = true, center_z = false) {
     
         // post
         solid_tube(od = standoff_post_diameter, h = standoff_post_height, r = 0.25);
-        
-        // edge of pi
-        //cylinder(d = 7, h=10);
     }
 }
 
@@ -38,7 +35,7 @@ module clip() {
     difference() {
         solid_tube(od = standoff_post_diameter, h = standoff_post_height + standoff_pin_height + 1.5, r = 0.25); 
 
-        translate([standoff_post_diameter * 0.5, 0, (plate_thickness / 2) + standoff_post_height - 1]) {
+        translate([standoff_post_diameter * 0.5, 0, (plate_thickness / 2) + standoff_post_height - 2.625]) {
             rotate([90, 0, 0]) {
                 cylinder(d = plate_thickness + 1, h = plate_thickness * 2, center = true);
             }
