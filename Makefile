@@ -1,7 +1,7 @@
 ifeq ($(shell uname -s),Darwin)
 	OPENSCAD := /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD
 else ifeq ($(shell uname -s),Linux)
-	OPENSCAD := /usr/bin/openscad
+	OPENSCAD := xvfb-run /usr/bin/openscad
 endif
 
 
@@ -43,7 +43,7 @@ tidy :
 cache/%.stl cache/%.png: %.scad
 	[ -d cache ] || mkdir -v cache
 	date
-	time xvfb-run ${OPENSCAD} -d $@.deps -o $@ $<
+	time ${OPENSCAD} -d $@.deps -o $@ $<
 	date
 	@echo .
 	@echo .
@@ -55,10 +55,16 @@ artifacts/% : cache/%
 	@[ -d artifacts ] || mkdir -v artifacts
 	cp $< $@
 
+everything all : stl png
 
-everything all :
+stl :
 	@for s in *.scad ; do \
 		[ -r $$s ] && ${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).stl ; \
+	done
+
+png :
+	@for s in *.scad ; do \
+		[ -r $$s ] && ${MAKE} --no-print-directory ${MAKEFLAGS} artifacts/$$(basename $$s .scad).png ; \
 	done
 
 readme.gitlab_container_registry:
