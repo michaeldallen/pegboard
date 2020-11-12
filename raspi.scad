@@ -36,7 +36,8 @@ module standoff(center_x = true, center_y = true, center_z = false) {
 
 module clip() {
     difference() {
-        solid_tube(od = standoff_post_diameter, h = standoff_post_height + standoff_pin_height + 1.5, r = 0.25);
+        solid_tube(od = standoff_post_diameter, h = standoff_post_height + standoff_pin_height + 1.5, r = 0.25); 
+
         translate([standoff_post_diameter * 0.5, 0, (plate_thickness / 2) + standoff_post_height - 1]) {
             rotate([90, 0, 0]) {
                 cylinder(d = plate_thickness + 1, h = plate_thickness * 2, center = true);
@@ -87,8 +88,7 @@ for (ss = [1]) {
             translate([ss * (pin_to_pin_shortside / 2), ls * (pin_to_pin_longside / 2), 0]) {
                 //standoff();
         solid_tube(od = standoff_pin_diameter, h = standoff_post_height + standoff_pin_height, r = 0.25);
-                translate([(standoff_post_diameter * ss) * 0.8, 0, 0]) {
-                    solid_tube(od = standoff_post_diameter, h = standoff_post_height, r = 0.25);
+                translate([(standoff_post_diameter * ss) * 0.8, 0, 1]) {
                     
 
                     rotate([0, 0, (ss > 0 ? 180 : 0)]) {
