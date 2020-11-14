@@ -7,8 +7,8 @@ use <lib/bar.scad>
 
 corner_radius = 1;
 
-brick_x = 58;
-brick_y = 27;
+brick_x = 59;
+brick_y = 28;
 
 fine = true;
 //fine = false;
