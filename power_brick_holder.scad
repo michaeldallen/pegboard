@@ -1,4 +1,4 @@
-include <pegboard_defaults.scad>
+include <lib/defaults.scad>
 
 use <lib/box.scad>
 use <lib/bar.scad>
