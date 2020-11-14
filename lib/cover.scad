@@ -31,7 +31,7 @@ module cover(x_ness = 1, y_ness = 1, base_shim = 0) {
 }
 
 
-
+/*
 module box(inner_x = 10, inner_y = 20, inner_z = 30, roundcorner_radius = 1, wall_thickness =5) {
     translate([-1 * (inner_x / 2), -1 * (inner_y / 2) , -1 * (inner_z / 2)]) {
         difference () {
@@ -44,7 +44,7 @@ module box(inner_x = 10, inner_y = 20, inner_z = 30, roundcorner_radius = 1, wal
         }
     }
 }
-
+*/
 module rc_box(inner_x = 10, inner_y = 20, inner_z = 30, roundcorner_radius = 1, wall_thickness =5) {
     minkowski () {
         translate([-1 * (inner_x / 2), -1 * (inner_y / 2) , -1 * (inner_z / 2)]) {
